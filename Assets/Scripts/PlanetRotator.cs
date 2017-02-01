@@ -8,7 +8,6 @@ public class PlanetRotator : MonoBehaviour {
 	private Quaternion initialRotation;
 	private StaticData.AvailableGameStates gameState;
 	public GameObject scriptsBucket;
-	public GameObject periphericCharacter;
     public float rotationSpeed;
 	private Rigidbody2D planetRigidbody;
 
@@ -26,10 +25,7 @@ public class PlanetRotator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (gameState == StaticData.AvailableGameStates.Playing) {
-			planetRigidbody.angularVelocity = rotationSpeed;
-			Vector2 v = new Vector2 (this.transform.position.x - periphericCharacter.transform.position.x, this.transform.position.y - periphericCharacter.transform.position.y);
-			float magnitude = Mathf.Abs (v.x) + Mathf.Abs (v.y);
-			Physics2D.gravity = new Vector2 ((v.x / magnitude) * gravity, (v.y / magnitude) * gravity);
+			planetRigidbody.AddTorque(rotationSpeed, ForceMode2D.Impulse);
 		}
 	}
 

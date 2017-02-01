@@ -5,6 +5,8 @@ using System;
 
 public static class StaticData {
 
+	public static float gravity = -9.81f;
+
 	public enum AvailableGameStates {
 		Menu,	//Player is consulting the menu
 		Starting,	//Game is starting
